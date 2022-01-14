@@ -7,7 +7,6 @@ const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  console.log(location.pathname);
   return (
     <footer className="navbar">
       <nav className="navbarNav">
