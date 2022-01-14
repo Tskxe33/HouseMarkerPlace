@@ -10,6 +10,8 @@ import {
 import { db } from "../firebase.config";
 import { doc, setDoc, serverTimestamp } from "firebase/firestore";
 
+import { toast } from "react-toastify";
+
 const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
@@ -55,9 +57,10 @@ const SignUp = () => {
         formDataCopy,
       });
 
+      toast.success("successfully sign up!");
       navigate("/");
     } catch (error) {
-      console.log(error);
+      toast.error("something went wrong..");
     }
   };
 
