@@ -4,6 +4,10 @@ import { ReactComponent as ArrowRightIcon } from "../assets/svg/keyboardArrowRig
 
 import visibilityIcon from "../assets/svg/visibilityIcon.svg";
 
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+
+import { toast } from "react-toastify";
+
 const SignIn = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
@@ -21,6 +25,28 @@ const SignIn = () => {
       [e.target.id]: e.target.value,
     }));
   };
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const auth = getAuth();
+
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+      const user = userCredential.user;
+
+      toast.success("successfully logged in!");
+
+      user && navigate("/");
+    } catch (error) {
+      toast.error("Bad User Credentials");
+    }
+  };
   return (
     <>
       <div className="pageContainer">
@@ -29,7 +55,7 @@ const SignIn = () => {
         </header>
 
         <main>
-          <form>
+          <form onSubmit={onSubmit}>
             <input
               type="email"
               placeholder="email"
