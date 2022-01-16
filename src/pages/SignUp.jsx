@@ -12,6 +12,8 @@ import { doc, setDoc, serverTimestamp } from "firebase/firestore";
 
 import { toast } from "react-toastify";
 
+import OAuth from "../components/OAuth";
+
 const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
@@ -117,7 +119,7 @@ const SignUp = () => {
               </button>
             </div>
           </form>
-          {/* Google Auth */}
+          <OAuth />
 
           <Link to="/sign-in" className="registerLink">
             Sign In Intead
