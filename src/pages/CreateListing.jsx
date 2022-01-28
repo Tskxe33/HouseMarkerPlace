@@ -16,6 +16,7 @@ import { v4 as uuidv4 } from "uuid";
 
 const CreateListing = () => {
   const [loading, setLoading] = useState(false);
+  // eslint-disable-next-line no-unused-vars
   const [geolocationEnabled, setGeolocationEnabled] = useState(false);
   const [formData, setFormData] = useState({
     type: "rent",
@@ -110,6 +111,8 @@ const CreateListing = () => {
                 break;
               case "running":
                 console.log("Upload is running");
+                break;
+              default:
                 break;
             }
           },
